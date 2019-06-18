@@ -1,0 +1,5 @@
+input[type=file].csv {
+    padding:7px;
+    display:inline-block;
+    /*margin-left:25px;*/
+}
