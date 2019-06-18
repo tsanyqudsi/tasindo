@@ -16,14 +16,15 @@ class CreateOrdersTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('order_badge');
-			$table->bigInteger('receipt_number')->nullable();
-			$table->boolean('courier')->nullable();
+			$table->bigInteger('third_party_receipt_number')->nullable();
+			$table->bigInteger('admin_receipt_number')->nullable();
+			$table->boolean('courier');
 			$table->integer('sender_data');
 			$table->text('dropship_data');
 			$table->text('receiver_data');
 			$table->text('product_data');
 			$table->text('description')->nullable();
-			$table->boolean('status')->default('1');
+			$table->boolean('status');
 			$table->timestamps();
 			$table->softDeletes();
 		});

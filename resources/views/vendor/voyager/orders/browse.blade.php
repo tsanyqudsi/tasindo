@@ -4,7 +4,7 @@
     @parent
     <div class='container-fluid'>
         <form>
-            <div class='form-group'>
+            <div class='form-group pull-right'>
                     <input class='csv' type='file' name='filename'/>
                     <button class='btn btn-info'><i class='voyager-upload'></i> Upload CSV</button>
             </div>

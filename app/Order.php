@@ -13,6 +13,7 @@ class Order extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at'];
+    protected $fillable = ['order_badge', 'status'];
 
     public function scopeCurrentUser($query)
     {
@@ -28,20 +29,28 @@ class Order extends Model
 
     public function setOrderBadgeAttribute()
     {
+        // select last data on the record
         $data_badge = DB::table('orders')->whereYear('created_at','=',date('Y'))->latest()->first();
 
         // Validate the result, making sure if there's a record then choose the ID of the Record, if it doesn't then equal to 0.
         if(is_null($data_badge))
         {
-            $data_badge = '0';
+            $data_badge = 0;
         } else
         {
             $data_badge = $data_badge->id;
         }
-
         // This is supposed to be the format for Order Badge.
         $data_order_badge = date('y')./*sprintf('%03d',Auth::user()->id).*/sprintf('%05d',$data_badge+1);
 
         $this->attributes['order_badge'] = $data_order_badge;
+    }
+
+    public function setStatusAttribute(){
+        if(isset($this->attributes['admin_receipt_number'])){
+            $this->attributes['status'] = 2;
+        } else
+
+        $this->attributes['status'] = 1;
     }
 }
