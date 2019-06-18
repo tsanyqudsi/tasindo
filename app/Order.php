@@ -22,12 +22,7 @@ class Order extends Model
         }
     }
 
-    public function setSenderDataAttribute()
-    {
-        $this->attributes['sender_data'] = Auth::user()->id;
-    }
-
-    public function setOrderBadgeAttribute()
+    public function getOrderBadgeAttribute()
     {
         // select last data on the record
         $data_badge = DB::table('orders')->whereYear('created_at','=',date('Y'))->latest()->first();
@@ -41,9 +36,9 @@ class Order extends Model
             $data_badge = $data_badge->id;
         }
         // This is supposed to be the format for Order Badge.
-        $data_order_badge = date('y')./*sprintf('%03d',Auth::user()->id).*/sprintf('%05d',$data_badge+1);
+        $data_order_badge = date('y').sprintf('%02d',date('m')).sprintf('%05d',$data_badge+1);
 
-        $this->attributes['order_badge'] = $data_order_badge;
+        return $data_order_badge;
     }
 
     public function setStatusAttribute(){
@@ -52,5 +47,10 @@ class Order extends Model
         } else
 
         $this->attributes['status'] = 1;
+    }
+
+    public function setSenderDataAttribute()
+    {
+        $this->attributes['sender_data'] = Auth::user()->id;
     }
 }

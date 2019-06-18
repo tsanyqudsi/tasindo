@@ -43,6 +43,9 @@
                             @endphp
 
                             @foreach($dataTypeRows as $row)
+                                {{-- Hide if display_name == 'Status Pengiriman' or ( auth -> user and display_name == 'Nomor Resi Admin') --}}
+                                @if($row->display_name == 'Status Pengiriman' || ( Auth::user()->hasRole('user') && $row->display_name == 'Nomor Resi Admin' )) @continue @endif
+                                {{-- End Hide --}}
                                 <!-- GET THE DISPLAY OPTIONS -->
                                 @php
                                     $display_options = $row->details->display ?? NULL;
@@ -58,11 +61,12 @@
                                     {{ $row->slugify }}
                                     <label class="control-label" for="name">{{ $row->display_name }}</label>
                                     @include('voyager::multilingual.input-hidden-bread-edit-add')
-                                    @if (isset($row->details->view) && $row->display_name == 'Pengirim / Nama Saya')
+                                    @if (isset($row->details->view))
                                         @include($row->details->view, ['row' => $row, 'dataType' => $dataType, 'dataTypeContent' => $dataTypeContent, 'content' => $dataTypeContent->{$row->field}, 'action' => ($edit ? 'edit' : 'add')])
-                                    <!-- Hack Display Custom field if display_name == 'Pengirim / Nama Saya' -->
+                                    {{-- Hack Display Custom field if display_name == 'Pengirim / Nama Saya' and 'Status Pengiriman' --}}
                                     @elseif ($row->type == 'relationship' && $row->display_name == 'Pengirim / Nama Saya')
                                         <input class="form-control" placeholder="{{ $display_id }}" readonly/>
+                                    {{-- End Hack --}}
                                     @elseif ($row->type == 'relationship')
                                         @include('voyager::formfields.relationship', ['options' => $row->details])
                                     @else
