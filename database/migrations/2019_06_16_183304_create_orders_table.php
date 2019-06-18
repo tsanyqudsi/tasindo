@@ -15,6 +15,7 @@ class CreateOrdersTable extends Migration {
 		Schema::create('orders', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer('order_badge');
 			$table->bigInteger('receipt_number')->nullable();
 			$table->boolean('courier')->nullable();
 			$table->integer('sender_data');
