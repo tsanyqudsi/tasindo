@@ -17,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         Voyager::addFormField(DisabledFormField::class);
+        Voyager::addAction(\App\Actions\PrintNote::class);
         //
     }
 

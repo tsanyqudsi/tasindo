@@ -3,3 +3,11 @@ input[type=file].csv {
     display:inline-block;
     /*margin-left:25px;*/
 }
+
+.inline-block {
+    display:inline-block;
+}
+
+#bulk_print_btn{
+    padding-top: 8px;
+}

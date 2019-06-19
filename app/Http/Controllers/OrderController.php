@@ -28,4 +28,8 @@ class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControlle
         }
         return redirect()->route('voyager.orders.index')->with($this->alertSuccess(__('Successfully Uploaded CSV')));
     }
+
+    public function print_note(){
+        
+    }
 }
