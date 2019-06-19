@@ -16,8 +16,8 @@ class CreateOrdersTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('order_badge');
-			$table->bigInteger('third_party_receipt_number')->nullable();
-			$table->bigInteger('admin_receipt_number')->nullable();
+			$table->text('third_party_receipt_number')->nullable();
+			$table->text('admin_receipt_number')->nullable();
 			$table->boolean('courier');
 			$table->integer('sender_data');
 			$table->text('dropship_data');

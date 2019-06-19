@@ -23,3 +23,4 @@ Route::group(['prefix' => 'admin'], function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/admin/file/import_csv','OrderController@import_csv')->name('import_csv');
