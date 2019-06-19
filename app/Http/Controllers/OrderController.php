@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use League\Csv\Reader;
 use League\Csv\Statement;
-use TCG\Voyager\Events\BreadAdded;
+
 use App\Order;
 use File;
 
 class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseController
 {
-    public function import_csv(Request $request){
+    public function import_csv(Request $request)
+    {
         $csv = Reader::createFromPath($request->file('csv-file'),'r');
         $records = $csv->getContent();
         $records = array_map('str_getcsv',explode("\n", $records));
@@ -29,7 +30,8 @@ class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControlle
         return redirect()->route('voyager.orders.index')->with($this->alertSuccess(__('Successfully Uploaded CSV')));
     }
 
-    public function print_note(){
-        
+    public function print_note()
+    {
+        return view('pdf.note');
     }
 }

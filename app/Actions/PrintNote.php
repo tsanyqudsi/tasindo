@@ -24,12 +24,12 @@ class PrintNote extends AbstractAction
     public function getAttributes()
     {
         return [
-            'class' => 'btn btn-sm btn-success pull-right view',
+            'class' => 'btn btn-sm btn-success pull-right view margin-right-1',
         ];
     }
 
     public function getDefaultRoute()
     {
-       // return route('my.route');
+       return route('print_note');
     }
 }

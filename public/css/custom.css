@@ -1,11 +1,15 @@
 input[type=file].csv {
     padding:7px;
     display:inline-block;
-    /*margin-left:25px;*/
+    margin-left:1rem;
 }
 
 .inline-block {
     display:inline-block;
+}
+
+.margin-right-1{
+    margin-right:0.35rem;
 }
 
 #bulk_print_btn{

@@ -1,4 +1,4 @@
-<a class="btn btn-success" id="bulk_print_btn"><i class="voyager-tag"></i> <span>Bulk Print Note</span></a>
+<a class="btn btn-success pull-right" id="bulk_print_btn"><i class="voyager-tag"></i> <span>Bulk Print Note</span></a>
 
 {{-- Bulk print modal --}}
 <div class="modal modal-success fade" tabindex="-1" id="bulk_print_modal" role="dialog">

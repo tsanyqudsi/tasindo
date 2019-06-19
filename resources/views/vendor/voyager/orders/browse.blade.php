@@ -2,8 +2,8 @@
 
 @section('page_header')
     @parent
-    <div class='container-fluid pull-right'>
-        <form class='inline-block' action="{{route('import_csv')}}" method="post" enctype="multipart/form-data">
+    <div class='container-fluid'>
+        <form class='inline-block pull-right' action="{{route('import_csv')}}" method="post" enctype="multipart/form-data">
             <div class='form-group'>
                     {{csrf_field()}}
                     <input class='csv' type='file' name='csv-file'/>
