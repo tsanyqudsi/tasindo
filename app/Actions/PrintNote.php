@@ -3,6 +3,7 @@
 namespace App\Actions;
 
 use TCG\Voyager\Actions\AbstractAction;
+use App\Order;
 
 class PrintNote extends AbstractAction
 {
@@ -30,6 +31,7 @@ class PrintNote extends AbstractAction
 
     public function getDefaultRoute()
     {
-       return route('print_note');
+        $id=6;
+        return route('print_note',$id);
     }
 }

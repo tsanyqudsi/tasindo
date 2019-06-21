@@ -24,4 +24,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/admin/import_csv','OrderController@import_csv')->name('import_csv');
-Route::get('/admin/print_note','OrderController@print_note')->name('print_note');
+Route::get('/admin/print_note/{id}','OrderController@print_note')->name('print_note');

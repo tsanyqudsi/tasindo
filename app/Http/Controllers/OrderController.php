@@ -8,6 +8,7 @@ use League\Csv\Statement;
 
 use App\Order;
 use File;
+use PDF;
 
 class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseController
 {
@@ -30,8 +31,13 @@ class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControlle
         return redirect()->route('voyager.orders.index')->with($this->alertSuccess(__('Successfully Uploaded CSV')));
     }
 
-    public function print_note()
+    public function print_note($id)
     {
-        return view('pdf.note');
+        $order = Order::find($id);
+        $note = PDF::loadView('pdf.note')
+            ->setPaper('a4', 'portrait');
+        $order_badge = $order->order_badge;
+
+        return $note->download($order_badge.'.pdf');
     }
 }

@@ -1,17 +1,29 @@
-input[type=file].csv {
+/* Note */
+.pdf .note-data::after{
+    content: ':';
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.pdf .company{
+    font-size: .8rem;
+}
+
+/* Admin Page */
+.voyager input[type=file].csv {
     padding:7px;
     display:inline-block;
     margin-left:1rem;
 }
 
-.inline-block {
+.voyager .inline-block {
     display:inline-block;
 }
 
-.margin-right-1{
+.voyager .margin-right-1{
     margin-right:0.35rem;
 }
 
-#bulk_print_btn{
+.voyager #bulk_print_btn{
     padding-top: 8px;
 }
