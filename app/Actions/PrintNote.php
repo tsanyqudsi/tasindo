@@ -31,7 +31,6 @@ class PrintNote extends AbstractAction
 
     public function getDefaultRoute()
     {
-        $id=6;
-        return route('print_note',$id);
+        return route('print_note',$this->data->{$this->data->getKeyName()});
     }
 }
