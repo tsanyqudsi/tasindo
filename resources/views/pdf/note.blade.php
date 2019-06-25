@@ -1,7 +1,7 @@
 @extends('layouts.pdf')
 
 @section('style')
-    <style>
+    <style>       
         .pdf .note-data::after{
         content: ':';
         margin-left: 4px;
@@ -26,7 +26,7 @@
                         <div class ='noteTitleDetails pl-3' style='border-left:1px solid #9e9e9e'>
                             <small class='note-data'>Dibuat pada tanggal</small><small><b>{{date('d-m-Y')}}</b></small>
                             <br/>
-                            <small class='note-data'>Nomor Resi Pengiriman</small><small>789321788</small>
+                        <small class='note-data'>Nomor Resi Pengiriman</small><small>{{$order->admin_receipt_number}}</small>
                         </div>
                     </th>
                 </thead>
@@ -79,6 +79,15 @@
                                 {{$order->description}}
                             </div>
                         </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5"></td>
                     </tr>
                 </tbody>
             </table>

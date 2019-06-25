@@ -16,5 +16,5 @@
 @stop
 
 @section('javascript')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jeditable.js/2.0.10/jquery.jeditable.min.js"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jeditable.js/2.0.10/jquery.jeditable.min.js"></script> --}}
 @stop

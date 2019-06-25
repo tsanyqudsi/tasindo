@@ -37,19 +37,25 @@ class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControlle
         $sender_data = User::find($order->sender_data)->name;
         $courier = Courier::find($order->courier)->courier;
         $note = PDF::loadView('pdf.note',compact('order','sender_data','courier'))
-                ->setPaper('a4','landscape')
-                ->setOption('viewport-size','1280x1024');
+                ->setPaper('a4','landscape');
         $filename = $order->order_badge;
         return $note->download($filename.'.pdf');
     }
 
     public function bulk_print_note(Request $request)
     {
-        dd('Not Available yet');
+        $html ='';
         $id= explode(',', $request->id);
         $orders = Order::find($id);
-        dd($orders);
 
-        return view('pdf.note',compact('orders','sender_data','courier'));
+        foreach($orders as $order){
+            $sender_data = User::find($order->sender_data)->name;
+            $courier = Courier::find($order->courier)->courier;
+            $view = view('pdf.note')->with(compact('order','sender_data','courier'));
+            $html .= $view->render();
+        }
+        $pdf = PDF::loadHTML($html);            
+        $note = $pdf->setPaper('a4', 'landscape');
+        return $note->download('delivery_note'.date('d-m-Y').'.pdf');
     }
 }
