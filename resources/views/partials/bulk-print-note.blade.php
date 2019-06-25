@@ -14,10 +14,9 @@
             <div class="modal-body" id="bulk_print_modal_body">
             </div>
             <div class="modal-footer">
-                <form action="{{ route('voyager.'.$dataType->slug.'.index') }}/0" id="bulk_print_form" method="POST">
-                    {{ method_field("print") }}
+                <form action="{{ route('bulk_print_note') }}" id="bulk_print_form" method="POST">
                     {{ csrf_field() }}
-                    <input type="hidden" name="ids" id="bulk_print_input" value="">
+                    <input type="hidden" name="id" id="bulk_print_input" value="">
                     <input type="submit" class="btn btn-success pull-right print-confirm"
                              value="Yes, Print These {{ strtolower($dataType->display_name_plural) }}">
                 </form>
@@ -36,38 +35,38 @@ window.onload = function () {
         prev_handler();
     }
 
-    // Bulk print selectors
+    //Bulk print selectors
     var $bulkprintBtn = $('#bulk_print_btn');
     var $bulkprintModal = $('#bulk_print_modal');
     var $bulkprintCount = $('#bulk_print_count');
     var $bulkprintDisplayName = $('#bulk_print_display_name');
     var $bulkprintInput = $('#bulk_print_input');
-    // Reposition modal to prevent z-index issues
+    //Reposition modal to prevent z-index issues
     $bulkprintModal.appendTo('body');
-    // Bulk print listener
+    //Bulk print listener
     $bulkprintBtn.click(function () {
         var ids = [];
         var $checkedBoxes = $('#dataTable input[type=checkbox]:checked').not('.select_all');
         var count = $checkedBoxes.length;
         if (count) {
-            // Reset input value
+            //Reset input value
             $bulkprintInput.val('');
-            // Deletion info
+            //Deletion info
             var displayName = count > 1 ? '{{ $dataType->display_name_plural }}' : '{{ $dataType->display_name_singular }}';
             displayName = displayName.toLowerCase();
             $bulkprintCount.html(count);
             $bulkprintDisplayName.html(displayName);
-            // Gather IDs
+            //Gather IDs
             $.each($checkedBoxes, function () {
                 var value = $(this).val();
                 ids.push(value);
             })
-            // Set input value
+            //Set input value
             $bulkprintInput.val(ids);
-            // Show modal
+            //Show modal
             $bulkprintModal.modal('show');
         } else {
-            // No row selected
+            //No row selected
             toastr.warning("You haven't selected anything to print");
         }
     });

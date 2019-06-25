@@ -42,4 +42,14 @@ class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControlle
         $filename = $order->order_badge;
         return $note->download($filename.'.pdf');
     }
+
+    public function bulk_print_note(Request $request)
+    {
+        dd('Not Available yet');
+        $id= explode(',', $request->id);
+        $orders = Order::find($id);
+        dd($orders);
+
+        return view('pdf.note',compact('orders','sender_data','courier'));
+    }
 }

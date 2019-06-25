@@ -13,7 +13,7 @@ class Order extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at'];
-
+    
     public function scopeCurrentUser($query)
     {
         if(Auth::user()->hasRole('user')){

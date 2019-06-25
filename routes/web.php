@@ -25,3 +25,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/admin/import_csv','OrderController@import_csv')->name('import_csv');
 Route::get('/admin/print_note/{id}','OrderController@print_note')->name('print_note');
+Route::post('/admin/bulk_print_note','OrderController@bulk_print_note')->name('bulk_print_note');
