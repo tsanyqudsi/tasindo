@@ -53,5 +53,4 @@ class Order extends Model
 
         $this->attributes['status'] = 1;
     }
-
 }

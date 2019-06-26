@@ -16,5 +16,19 @@
 @stop
 
 @section('javascript')
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jeditable.js/2.0.10/jquery.jeditable.min.js"></script> --}}
+    @parent
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jeditable.js/2.0.10/jquery.jeditable.min.js"></script>
+    {{-- <script>
+        $(document).ready(function() {
+            var id = $(this).closest('tr').find('td:nth-child(2)').text();
+            console.log(id);
+            $('tr td:nth-child(3)').editable('/admin/orders/set_third_party_receipt_number',
+            {
+                name : 'third_party_receipt_number',
+                submitdata : {
+                    value : 3,
+                },
+            });
+        });
+    </script> --}}
 @stop

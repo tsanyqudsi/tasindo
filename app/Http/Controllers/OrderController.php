@@ -58,4 +58,13 @@ class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControlle
         $note = $pdf->setPaper('a4', 'landscape');
         return $note->download('delivery_note'.date('d-m-Y').'.pdf');
     }
+
+    public function third_party_number(Request $request){
+        dd($request);
+        $receipt = Order::update(['third_party_receipt_number' => $request->t]);
+    }
+
+    public function setAdminReceiptNumberAttribute(){
+        $this->attribute['admin_receipt_number'];
+    }
 }
