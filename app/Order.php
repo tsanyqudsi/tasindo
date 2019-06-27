@@ -40,13 +40,7 @@ class Order extends Model
         return $data_order_badge;
     }
 
-
-    public function getSenderDataAddAttribute()
-    {
-        return Auth::user()->id;
-    }
-
-    public function setSenderDataAddAttribute()
+    public function setSenderDataAttribute()
     {
         $this->attributes['sender_data'] = Auth::user()->id;
     }
