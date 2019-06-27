@@ -46,6 +46,11 @@ class Order extends Model
         return Auth::user()->id;
     }
 
+    public function setSenderDataAddAttribute()
+    {
+        $this->attributes['sender_data'] = Auth::user()->id;
+    }
+
     public function setStatusAttribute(){
         if(isset($this->attributes['admin_receipt_number'])){
             $this->attributes['status'] = 2;
