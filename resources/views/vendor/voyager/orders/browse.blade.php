@@ -21,10 +21,10 @@
     <script>
         $(document).ready(function() {
             //need to be simplified
-            dropshipIndex = ($('th:contains("Nomor Resi Dropship")').index())+1;
+            dropshipIndex = ($('th:contains("Resi Pengiriman Pihak Ketiga")').index())+1;
             dropshipIndex = 'tr td:nth-child('+dropshipIndex+')';
             
-            adminIndex = ($('th:contains("Nomor Resi Admin")').index())+1;
+            adminIndex = ($('th:contains("Resi Pengiriman Admin")').index())+1;
             adminIndex = 'tr td:nth-child('+adminIndex+')';
 
             $(dropshipIndex+","+adminIndex).on('click',function(){
