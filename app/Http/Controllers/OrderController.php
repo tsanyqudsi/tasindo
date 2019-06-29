@@ -68,6 +68,11 @@ class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControlle
         $receipt->{$db_field} = $request->value;
         $receipt->save();
 
+        //Change Status Pengiriman
+        if(isset($receipt->admin_receipt_number)){
+            setStatusAttribute();
+        }
+
         return $receipt->{$db_field};
     }
 }
