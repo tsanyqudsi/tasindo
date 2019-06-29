@@ -40,6 +40,9 @@
                 cancelcssclass : 'btn btn-danger',
                 submitcssclass : 'btn btn-success margin-right-1',
                 inputcssclass : 'form-control input-sm',
+                callback : function(result) {
+                    console.log('Result: ' + result);
+                }
                 onblur : 'ignore',
                 data: function(string) {return $.trim(string)},
                 tooltip : 'Click to Edit',
