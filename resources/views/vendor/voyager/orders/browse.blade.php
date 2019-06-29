@@ -18,17 +18,30 @@
 @section('javascript')
     @parent
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jeditable.js/2.0.10/jquery.jeditable.min.js"></script>
-    {{-- <script>
+    <script>
         $(document).ready(function() {
-            var id = $(this).closest('tr').find('td:nth-child(2)').text();
-            console.log(id);
+
             $('tr td:nth-child(3)').editable('/admin/orders/set_third_party_receipt_number',
             {
                 name : 'third_party_receipt_number',
+                cancel : 'Cancel',
+                submit : 'Save',
+                cancelcssclass : 'btn btn-danger',
+                submitcssclass : 'btn btn-success margin-right-1',
+                inputcssclass : 'form-control input-sm',
+                onblur : 'ignore',
+                data: function(string) {return $.trim(string)},
+                tooltip : 'Click to Edit',
                 submitdata : {
-                    value : 3,
+                    id : function(){
+                        return this_value;
+                    }
                 },
             });
+
+            $('tr td:nth-child(3)').on('click',function(){
+                this_value=($(this).parent().find('td').children(':first').val());
+            });
         });
-    </script> --}}
+    </script>
 @stop

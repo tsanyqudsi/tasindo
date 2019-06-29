@@ -60,8 +60,12 @@ class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControlle
     }
 
     public function third_party_number(Request $request){
-        dd($request);
-        $receipt = Order::update(['third_party_receipt_number' => $request->t]);
+        $receipt = Order::find($request->id);
+        dd($request->third_party_receipt_number);
+        $receipt->third_party_receipt_number = $request->third_party_receipt_number;
+        $receipt->save();
+
+        return $receipt->third_party_receipt_number;
     }
 
     public function setAdminReceiptNumberAttribute(){

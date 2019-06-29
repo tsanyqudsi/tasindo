@@ -1,4 +1,17 @@
-const mix = require('laravel-mix');
+const mix = require('laravel-mix'),
+    workboxPlugin = require('workbox-webpack-plugin');
+
+mix.webpackConfig({
+    resolve: {
+        plugins: [
+            new workboxPlugin.GenerateSW({
+                swDest: 'sw.js',
+                clientsClaim: true,
+                skipWaiting: true,
+              })
+        ]
+    }
+});
 
 /*
  |--------------------------------------------------------------------------
