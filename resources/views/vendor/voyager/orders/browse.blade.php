@@ -20,10 +20,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jeditable.js/2.0.10/jquery.jeditable.min.js"></script>
     <script>
         $(document).ready(function() {
+            //need to be simplified
+            dropshipIndex = ($('th:contains("Nomor Resi Dropship")').index())+1;
+            dropshipIndex = 'tr td:nth-child('+dropshipIndex+')';
+            
+            adminIndex = ($('th:contains("Nomor Resi Admin")').index())+1;
+            adminIndex = 'tr td:nth-child('+adminIndex+')';
 
-            $('tr td:nth-child(3)').editable('/admin/orders/set_third_party_receipt_number',
+            $(dropshipIndex+","+adminIndex).on('click',function(){
+                id_value =$(this).siblings(':first').children().val();
+                th_value = $(this).closest('table').find('th').eq($(this).index()).text().trim();
+            });
+
+            $(dropshipIndex+","+adminIndex).editable('/admin/orders/editable',
             {
-                name : 'third_party_receipt_number',
+                name : 'value',
                 cancel : 'Cancel',
                 submit : 'Save',
                 cancelcssclass : 'btn btn-danger',
@@ -34,13 +45,12 @@
                 tooltip : 'Click to Edit',
                 submitdata : {
                     id : function(){
-                        return this_value;
+                        return id_value;
+                    },
+                    name : function(){
+                        return th_value;
                     }
                 },
-            });
-
-            $('tr td:nth-child(3)').on('click',function(){
-                this_value=($(this).parent().find('td').children(':first').val());
             });
         });
     </script>

@@ -11,6 +11,7 @@ use App\Courier;
 use App\User;
 use File;
 use PDF;
+use DB;
 
 class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseController
 {
@@ -59,16 +60,14 @@ class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControlle
         return $note->download('delivery_note'.date('d-m-Y').'.pdf');
     }
 
-    public function third_party_number(Request $request){
+    public function editable(Request $request){
+
+        $db_field = DB::table('data_rows')->where('display_name',$request->name)->value('field');
+
         $receipt = Order::find($request->id);
-        dd($request->third_party_receipt_number);
-        $receipt->third_party_receipt_number = $request->third_party_receipt_number;
+        $receipt->{$db_field} = $request->value;
         $receipt->save();
 
-        return $receipt->third_party_receipt_number;
-    }
-
-    public function setAdminReceiptNumberAttribute(){
-        $this->attribute['admin_receipt_number'];
+        return $receipt->{$db_field};
     }
 }
