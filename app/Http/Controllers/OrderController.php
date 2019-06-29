@@ -66,13 +66,14 @@ class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControlle
 
         $receipt = Order::find($request->id);
         $receipt->{$db_field} = $request->value;
-        $receipt->save();
-
         //Change Status Pengiriman
         if(isset($receipt->admin_receipt_number)){
-            setStatusAttribute();
-        }
+            $receipt->status = 2;
+        }else{
+            $receipt->status = 1;
+        };
 
+        $receipt->save();
         return $receipt->{$db_field};
     }
 }
