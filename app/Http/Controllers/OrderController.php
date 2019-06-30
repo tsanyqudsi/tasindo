@@ -65,7 +65,7 @@ class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControlle
         $db_field = DB::table('data_rows')->where('display_name',$request->name)->value('field');
 
         $receipt = Order::find($request->id);
-        $receipt->{$db_field} = $request->value;
+        $receipt->{$db_field} = strtoupper($request->value);
         //Change Status Pengiriman
         if(isset($receipt->admin_receipt_number)){
             $receipt->status = 2;

@@ -42,7 +42,7 @@
                 inputcssclass : 'form-control input-sm',
                 callback : function(result) {
                     console.log('Result: ' + result);
-                }
+                },
                 onblur : 'ignore',
                 data: function(string) {return $.trim(string)},
                 tooltip : 'Click to Edit',
