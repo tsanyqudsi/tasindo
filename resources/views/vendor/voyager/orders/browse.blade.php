@@ -39,7 +39,8 @@
                     type: 'GET',
                     url: '/admin/orders/refreshStatus/'+id_value,
                     success:function(data){
-                        (this).siblings(':nth-child('+statusIndex+')').text(data);
+                        $(this).siblings(':nth-child('+statusIndex+')').text(data);
+			console.log(data);
                     }
                 });
             });
