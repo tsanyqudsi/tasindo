@@ -43,6 +43,11 @@
                 submitcssclass : 'btn btn-success margin-right-1',
                 inputcssclass : 'form-control input-sm',
                 onblur : 'ignore',
+                callback: function(result){
+                    $(':checkbox[value='+id_value+']').siblings(':nth-child('+statusIndex+')').text(result);
+                    console.log(result);
+                    console.log($(':checkbox[value='+id_value+']').siblings(':nth-child('+statusIndex+')').text());
+                },
                 data: function(string) {return $.trim(string)},
                 tooltip : 'Click to Edit',
                 submitdata : {
@@ -55,15 +60,15 @@
                 },
             });
 
-            $(adminIndex).on('change',function(){
-                $.ajax({
-                    type: 'GET',
-                    url: '/admin/orders/refreshStatus/'+id_value,
-                    success:function(data){
-                        $(this).siblings(':nth-child('+statusIndex+')').text(data);
-                    }
-                });
-            });
+            // $(adminIndex).on('change',function(){
+            //     $.ajax({
+            //         type: 'GET',
+            //         url: '/admin/orders/refreshStatus/'+id_value,
+            //         success:function(data){
+            //             $(this).siblings(':nth-child('+statusIndex+')').text(data);
+            //         }
+            //     });
+            // });
 
         });
     </script>
