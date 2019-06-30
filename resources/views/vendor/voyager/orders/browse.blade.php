@@ -44,9 +44,10 @@
                 inputcssclass : 'form-control input-sm',
                 onblur : 'ignore',
                 callback: function(result){
-                    $(':checkbox[value='+id_value+']').siblings(':nth-child('+statusIndex+')').text(result);
                     console.log(result);
-                    console.log($(':checkbox[value='+id_value+']').siblings(':nth-child('+statusIndex+')').text());
+		    console.log(id_value);
+		    console.log(statusIndex);
+                    console.log($('#checkbox_'+id_value+'').siblings(':nth-child('+statusIndex+')').children().text());
                 },
                 data: function(string) {return $.trim(string)},
                 tooltip : 'Click to Edit',
@@ -59,17 +60,6 @@
                     }
                 },
             });
-
-            // $(adminIndex).on('change',function(){
-            //     $.ajax({
-            //         type: 'GET',
-            //         url: '/admin/orders/refreshStatus/'+id_value,
-            //         success:function(data){
-            //             $(this).siblings(':nth-child('+statusIndex+')').text(data);
-            //         }
-            //     });
-            // });
-
         });
     </script>
 @stop
