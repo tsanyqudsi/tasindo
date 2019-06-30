@@ -34,17 +34,6 @@
                 th_value = $(this).closest('table').find('th').eq($(this).index()).text().trim();
             });
 
-            $(adminIndex).on('change',function(){
-                $.ajax({
-                    type: 'GET',
-                    url: '/admin/orders/refreshStatus/'+id_value,
-                    success:function(data){
-                        $(this).siblings(':nth-child('+statusIndex+')').text(data);
-			console.log(data);
-                    }
-                });
-            });
-
             $(dropshipIndex+","+adminIndex).editable('/admin/orders/editable',
             {
                 name : 'value',
@@ -65,6 +54,17 @@
                     }
                 },
             });
+
+            $(adminIndex).on('change',function(){
+                $.ajax({
+                    type: 'GET',
+                    url: '/admin/orders/refreshStatus/'+id_value,
+                    success:function(data){
+                        $(this).siblings(':nth-child('+statusIndex+')').text(data);
+                    }
+                });
+            });
+
         });
     </script>
 @stop
