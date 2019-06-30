@@ -27,9 +27,15 @@
             adminIndex = ($('th:contains("Resi Pengiriman Admin")').index())+1;
             adminIndex = 'tr td:nth-child('+adminIndex+')';
 
+            statusIndex = ($('th:contains("Status Pengiriman")').index())+1;
+
             $(dropshipIndex+","+adminIndex).on('click',function(){
-                id_value =$(this).siblings(':first').children().val();
+                id_value = $(this).siblings(':first').children().val();
                 th_value = $(this).closest('table').find('th').eq($(this).index()).text().trim();
+            });
+
+            $(adminIndex).on('change',function(){
+                $(this).siblings(':nth-child('+statusIndex+')').text('test');
             });
 
             $(dropshipIndex+","+adminIndex).editable('/admin/orders/editable',
@@ -40,9 +46,6 @@
                 cancelcssclass : 'btn btn-danger',
                 submitcssclass : 'btn btn-success margin-right-1',
                 inputcssclass : 'form-control input-sm',
-                callback : function(result) {
-                    console.log('Result: ' + result);
-                },
                 onblur : 'ignore',
                 data: function(string) {return $.trim(string)},
                 tooltip : 'Click to Edit',
