@@ -35,7 +35,13 @@
             });
 
             $(adminIndex).on('change',function(){
-                $(this).siblings(':nth-child('+statusIndex+')').text('test');
+                $.ajax({
+                    type: 'GET',
+                    url: '/admin/orders/refreshStatus/'+id_value,
+                    success:function(data){
+                        (this).siblings(':nth-child('+statusIndex+')').text(data);
+                    }
+                });
             });
 
             $(dropshipIndex+","+adminIndex).editable('/admin/orders/editable',

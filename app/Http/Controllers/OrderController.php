@@ -9,6 +9,7 @@ use League\Csv\Statement;
 use App\Order;
 use App\Courier;
 use App\User;
+use App\Status;
 use File;
 use PDF;
 use DB;
@@ -60,8 +61,8 @@ class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControlle
         return $note->download('delivery_note'.date('d-m-Y').'.pdf');
     }
 
-    public function editable(Request $request){
-
+    public function editable(Request $request)
+    {
         $db_field = DB::table('data_rows')->where('display_name',$request->name)->value('field');
 
         $receipt = Order::find($request->id);
@@ -75,5 +76,12 @@ class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControlle
 
         $receipt->save();
         return $receipt->{$db_field};
+    }
+
+    public function refresh_status($id)
+    {
+        $status =  Status::find($id)->status;
+
+        return $status;
     }
 }
