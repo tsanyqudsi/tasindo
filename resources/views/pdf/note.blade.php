@@ -4,25 +4,42 @@
     <style>       
         .pdf .note-data::after{
         content: ':';
-        margin-left: 4px;
-        margin-right: 4px;
+        margin: 1px;
+        position: static;
+        overflow: auto;
         }
     
         .pdf .company{
-            font-size: .8rem;
+            font-size: .6rem;
+        }
+
+        .table-pdf{
+            height: fixed;
+
+        }
+
+        .container-print{
+            content: ':';
+            margin: 1px;
+            position: static;
+            overflow: auto;
+        }
+
+        small { 
+            font-size: .6rem;
         }
     </style>
 @stop
 
 @section('content')
     {{-- @foreach ($orders as $order) --}}
-        <div class='container-fluid pdf'>
-            <table class='table table-borderless'>
+        <div class='container-print' cellpadding="1">
+            <table class='table-pdf' >
                 <thead class='table-active'>
                     <th colspan="4">
                         <h1 class='h4 text-uppercase' id='noteTitle'>Nota Pengiriman <span class='text-muted'>/ Delivery Note</span></h1>
                     </th>
-                    <th style='width:300px' >
+                    <th style='width:400px' >
                         <div class ='noteTitleDetails pl-3' style='border-left:1px solid #9e9e9e'>
                             <small class='note-data'>Dibuat pada tanggal</small><small><b>{{date('d-m-Y')}}</b></small>
                             <br/>
@@ -32,38 +49,38 @@
                 </thead>
 
                 <tbody>
-                    <tr >
+                    <tr>
                         <td colspan="3">
                             <span class='h6 font-weight-bold note-data'>Pengirim</span>
                             <div>
-                            {{$sender_data}}
+                                <small>{{$order->dropship_data}}</small>
+                            </div>
+                            <div>
+                                <small><b>No. pesanan:</b>{{$order->order_badge}}</small>
                             </div>
                         </td>
-                        <td colspan="2">
+                        <td colspan="6">
                             <span class='h6 font-weight-bold note-data'>Penerima</span>
                             <div>
-                                {{$order->receiver_data}}
+                                <small>{{$order->receiver_data}}</small>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="3">
-                            <span class='h6 font-weight-bold note-data'>Kurir</span>
-                            <div class='h3'>
-                                {{$courier}}
-                            </div>
+                            <span class='h6 font-weight-bold note-data'>Kurir: {{$courier}}</span>
                         </td>
                         <td colspan="2">
                             <span class='h6 font-weight-bold note-data'>Deskripsi Produk</span>
                             <div>
                                 {{$order->product_data}}
                             </div>
+                            <div>
+                                <small>{{$order->description}}</small>
+                            </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td colspan="5"></td>
-                    </tr>
-                    <tr style='border-top:2px solid #9e9e9e'>
+                    <tr style='border-top:1px solid #9e9e9e'>
                         <td colspan="2">
                             <span class="h6 font-weight-bold note-data">Nomor Pesanan</span>
                             <div>
@@ -71,23 +88,17 @@
                             </div>
                         </td>
                         <td>
-                            <span class="company">Tasindo Batam</span>
+                            <span class="company">{{$sender_data}}</span>
                         </td>
-                        <td colspan="2">
-                            <span class="h6 font-weight-bold note-data">Keterangan</span>
-                            <div style="width:550px">
-                                {{$order->description}}
+                        <td colspan="1">
+                            <span class='h6 font-weight-bold note-data'>Deskripsi Produk</span>
+                            <div>
+                                {{$order->product_data}}
                             </div>
                         </td>
-                    </tr>
-                    <tr>
-                        <td colspan="5"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="5"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="5"></td>
+                        <td colspan="1">
+                            <small>Date:{{ date('Y-m-d H:i:s') }}</small>
+                        </td>
                     </tr>
                 </tbody>
             </table>
