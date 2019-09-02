@@ -5,7 +5,7 @@ namespace App\Actions;
 use TCG\Voyager\Actions\AbstractAction;
 use App\Order;
 
-class PrintNote extends AbstractAction
+class ShowLess extends AbstractAction
 {
     public function getTitle()
     {
