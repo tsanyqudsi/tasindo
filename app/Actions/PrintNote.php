@@ -25,7 +25,7 @@ class PrintNote extends AbstractAction
     public function getAttributes()
     {
         return [
-            'class' => 'btn btn-sm btn-success pull-right view margin-right-1',
+            'class' => 'btn btn-sm btn-success pull-right view',
         ];
     }
 

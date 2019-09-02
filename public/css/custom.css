@@ -27,3 +27,11 @@
 .voyager #bulk_print_btn{
     padding-top: 8px;
 }
+
+.voyager #dataTable td:first-child{
+    text-align: center;
+}
+
+.voyager #dataTable tr{
+    vertical-align: top;
+}
