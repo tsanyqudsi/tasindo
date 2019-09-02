@@ -32,6 +32,10 @@
     text-align: center;
 }
 
-.voyager #dataTable tr{
+.voyager #dataTable th{
     vertical-align: top;
+}
+
+.voyager table.dataTable thead th.sorting::after{
+    right:4px;
 }
