@@ -1,15 +1,15 @@
 /* Note */
-.pdf .note-data::after{
+.pdf .note-data::after {
     content: ':';
     margin-left: 4px;
     margin-right: 4px;
 }
 
-.pdf .company{
+.pdf .company {
     font-size: .8rem;
 }
 
-/* Admin Page */
+/* Browse Page */
 .voyager input[type=file].csv {
     padding:7px;
     display:inline-block;
@@ -20,22 +20,27 @@
     display:inline-block;
 }
 
-.voyager .margin-right-1{
+.voyager .margin-right-1 {
     margin-right:0.35rem;
 }
 
-.voyager #bulk_print_btn{
+.voyager #bulk_print_btn {
     padding-top: 8px;
 }
 
-.voyager #dataTable td:first-child{
+.voyager #dataTable td:first-child {
     text-align: center;
 }
 
-.voyager #dataTable th{
+.voyager #dataTable th {
     vertical-align: top;
 }
 
-.voyager table.dataTable thead th.sorting::after{
+.voyager table.dataTable thead th.sorting::after {
     right:4px;
+}
+
+/*Add Page*/
+.voyager.orders label.control-label {
+    font-weight: 600;
 }

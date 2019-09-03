@@ -14,7 +14,7 @@ class ShowLess extends AbstractAction
 
     public function getIcon()
     {
-        return '&#xe055;';
+        return 'voyager-double-up';
     }
 
     public function getPolicy()
@@ -25,7 +25,7 @@ class ShowLess extends AbstractAction
     public function getAttributes()
     {
         return [
-            'class' => 'btn btn-sm btn-info pull-right view',
+            'class' => 'btn btn-sm btn-dark pull-right view',
         ];
     }
 

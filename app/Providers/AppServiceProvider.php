@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Voyager::addFormField(DisabledFormField::class);
         Voyager::addAction(\App\Actions\PrintNote::class);
-        Voyager::addAction(\App\Actions\ShowLess::class);
+        // Voyager::addAction(\App\Actions\ShowLess::class);
         //
     }
 
