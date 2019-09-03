@@ -63,6 +63,10 @@
                                     @include('voyager::multilingual.input-hidden-bread-edit-add')
                                     @if (isset($row->details->view))
                                         @include($row->details->view, ['row' => $row, 'dataType' => $dataType, 'dataTypeContent' => $dataTypeContent, 'content' => $dataTypeContent->{$row->field}, 'action' => ($edit ? 'edit' : 'add')])
+                                    {{-- Hack Display Custom field if display_name == 'Pengirim / Nama Saya' --}}
+                                    @elseif ($row->type == 'relationship' && $row->display_name == 'Pengirim / Nama Saya')
+                                        <input class="form-control" placeholder="{{ $display_id }}" readonly/>
+                                    {{-- End Hack --}}
                                     @elseif ($row->type == 'relationship')
                                         @include('voyager::formfields.relationship', ['options' => $row->details])
                                     @else
