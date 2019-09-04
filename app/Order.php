@@ -21,7 +21,7 @@ class Order extends Model
         }
     }
 
-    public function getOrderBadgeAddAttribute()
+    public function setOrderBadgeAddAttribute()
     {
         // select last data on the record
         $data_badge = DB::table('orders')->whereYear('created_at','=',date('Y'))->latest()->first();
@@ -37,7 +37,7 @@ class Order extends Model
         // This is supposed to be the format for Order Badge.
         $data_order_badge = date('y').sprintf('%02d',date('m')).sprintf('%05d',$data_badge+1);
         
-        return $data_order_badge;
+        $this->attributes['order_badge'] = $data_order_badge;
     }
 
     public function setSenderDataAttribute()
