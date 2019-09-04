@@ -21,7 +21,7 @@ class Order extends Model
         }
     }
 
-    public function setOrderBadgeAddAttribute()
+    public function setOrderBadgeAttribute()
     {
         // select last data on the record
         $data_badge = DB::table('orders')->whereYear('created_at','=',date('Y'))->latest()->first();
