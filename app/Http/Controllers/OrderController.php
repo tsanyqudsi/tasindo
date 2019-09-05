@@ -22,8 +22,8 @@ class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControlle
         $records = $csv->getContent();
         $records = str_replace("\r\n",',', $records);
         $records = rtrim($string, ',');
+        $records = explode(',',$records);
         $records = compact('records');
-        $records = array_chunk($records,2);
         dd($records);
         foreach ($records as $record) {
             Order::where('order_badge','=', $record[0])
