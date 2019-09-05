@@ -53,7 +53,7 @@
                         <td colspan="3">
                             <span class='h6 font-weight-bold note-data'>Pengirim</span>
                             <div>
-                                <small>@if($order->dropship_data === NULL) {{$order->sender_data}} @else {{$order->dropship_data}} @endif</small>
+                                <small>@if($order->dropship_data === NULL) {{$sender_data}} @else {{$order->dropship_data}} @endif</small>
                             </div>
                             <div>
                                 <small><b>No. pesanan:</b>{{$order->order_badge}}</small>

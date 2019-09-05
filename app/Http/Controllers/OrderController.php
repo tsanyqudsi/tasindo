@@ -25,7 +25,7 @@ class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControlle
             Order::where('order_badge','=', $record[0])
             ->update(
                 [
-                    'admin_receipt_number' => $record[1],
+                    'third_party_receipt_number' => $record[1],
                     'status' => '2' 
                 ]
             );
