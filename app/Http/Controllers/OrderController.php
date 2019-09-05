@@ -19,7 +19,9 @@ class OrderController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControlle
     public function import_csv(Request $request)
     {
         $csv = Reader::createFromPath($request->file('csv-file'),'r');
-        $records = process($csv);
+        $records = $csv->getContent();
+        $records = str_replace("\r\n",',', $records)->compact('records');
+        dd($records);
         foreach ($records as $record) {
             Order::where('order_badge','=', $record[0])
             ->update(
